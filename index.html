@@ -1,9 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi Primera Web Gratis</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Proyectos | adgb-dev</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1f1f1f;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00ff88;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ffffff;
+        }
+        header p {
+            font-size: 1.2em;
+            color: #a0a0a0;
+        }
+        
+        /* Contenedor principal */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sección de proyectos */
+        h2 {
+            text-align: center;
+            color: #00ff88;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .grid-proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .tarjeta-proyecto {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #333;
+        }
+        .tarjeta-proyecto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+        }
+        .tarjeta-proyecto h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+        .etiqueta {
+            display: inline-block;
+            background-color: #333;
+            color: #00ff88;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #1f1f1f;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Hola Mundo! Mi sitio web ya está en internet de forma gratuita.</h1>
+
+    <header>
+        <h1>Mi Portafolio</h1>
+        <p>Desarrollo, optimización y proyectos técnicos</p>
+    </header>
+
+    <div class="container">
+        <h2>Mis Proyectos</h2>
+        
+        <div class="grid-proyectos">
+            
+            <!-- Proyecto 1 -->
+            <div class="tarjeta-proyecto">
+                <span class="etiqueta">Game Modding</span>
+                <h3>Red Dead Redemption 2 - Optimización y Entorno</h3>
+                <p>Edición avanzada de archivos de configuración interna del juego. Ajustes personalizados para modificar la densidad poblacional de la fauna y mejorar la calidad visual de los objetos del entorno.</p>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="tarjeta-proyecto">
+                <span class="etiqueta">Web Development</span>
+                <h3>Sitio Web Personal</h3>
+                <p>Implementación de un portafolio web alojado en GitHub Pages. Estructurado con HTML y CSS puro, enfocado en rendimiento, diseño responsivo y modo oscuro.</p>
+                <a href="https://adgb-dev.github.io/">Ver proyecto →</a>
+            </div>
+
+            <!-- Proyecto 3 -->
+            <div class="tarjeta-proyecto">
+                <span class="etiqueta">Siguiente Proyecto</span>
+                <h3>[Título de tu próximo trabajo]</h3>
+                <p>Aquí puedes agregar la descripción de alguna otra herramienta, script, diseño o modificación en la que hayas estado trabajando recientemente.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Contáctame a través de mi perfil de <a href="https://github.com/adgb-dev" target="_blank">GitHub</a>.</p>
+        <p>&copy; 2026 adgb-dev. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
