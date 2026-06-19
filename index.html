@@ -3,136 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Proyectos | adgb-dev</title>
+    <title>ADGB-DEV | Proyectos</title>
+    <!-- Importando fuentes estilo Rockstar -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos generales */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #1f1f1f;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 3px solid #00ff88;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #ffffff;
-        }
-        header p {
-            font-size: 1.2em;
-            color: #a0a0a0;
-        }
-        
-        /* Contenedor principal */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Variables de color estilo Rockstar (Mezcla de RDR2 y GTA) */
+        :root {
+            --rockstar-red: #cc0000;
+            --rockstar-gold: #f4b41a;
+            --dark-bg: #050505;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
         }
 
-        /* Sección de proyectos */
-        h2 {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Sección Portada a pantalla completa (Hero) */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            color: #00ff88;
-            margin-bottom: 30px;
-            font-size: 2em;
+            /* Aquí puedes poner la URL de una imagen tuya de RDR2 o GTA */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(5,5,5,1) 100%), 
+                        url('https://images.unsplash.com/photo-1542451313056-b7c8e626645f?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;
+            position: relative;
         }
-        .grid-proyectos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .tarjeta-proyecto {
-            background-color: #1e1e1e;
-            border-radius: 8px;
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #333;
-        }
-        .tarjeta-proyecto:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
-            border-color: #00ff88;
-        }
-        .tarjeta-proyecto h3 {
-            margin-top: 0;
-            color: #ffffff;
-        }
-        .etiqueta {
-            display: inline-block;
-            background-color: #333;
-            color: #00ff88;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 6rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
             margin-bottom: 10px;
         }
 
-        /* Pie de página */
+        .hero h2 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            font-size: 1.5rem;
+            color: var(--rockstar-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Contenedor de Proyectos */
+        .projects-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--rockstar-red);
+            padding-bottom: 10px;
+            margin-bottom: 50px;
+            display: inline-block;
+        }
+
+        /* Estilo de Tarjetas Cinematográficas */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #111;
+            border: 1px solid #333;
+            margin-bottom: 40px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        @media(min-width: 768px) {
+            .project-card {
+                flex-direction: row;
+                height: 350px;
+            }
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            border-color: var(--rockstar-red);
+        }
+
+        .project-image {
+            flex: 1;
+            background-color: #222;
+            /* Imagen de placeholder, cámbiala por tus capturas */
+            background-image: url('https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            min-height: 250px;
+        }
+
+        .project-info {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-info h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .project-info p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-view {
+            align-self: flex-start;
+            padding: 10px 25px;
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view:hover {
+            background-color: var(--rockstar-red);
+            border-color: var(--rockstar-red);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 30px 20px;
-            background-color: #1f1f1f;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #888;
+            padding: 40px;
+            background-color: #000;
+            border-top: 1px solid #222;
         }
-        a {
-            color: #00ff88;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
+        
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Mi Portafolio</h1>
-        <p>Desarrollo, optimización y proyectos técnicos</p>
+    <!-- PORTADA CINEMATOGRÁFICA -->
+    <header class="hero">
+        <h1>ADGB DEV</h1>
+        <h2>Portafolio de Modding & Desarrollo</h2>
     </header>
 
-    <div class="container">
-        <h2>Mis Proyectos</h2>
-        
-        <div class="grid-proyectos">
-            
-            <!-- Proyecto 1 -->
-            <div class="tarjeta-proyecto">
-                <span class="etiqueta">Game Modding</span>
-                <h3>Red Dead Redemption 2 - Optimización y Entorno</h3>
-                <p>Edición avanzada de archivos de configuración interna del juego. Ajustes personalizados para modificar la densidad poblacional de la fauna y mejorar la calidad visual de los objetos del entorno.</p>
-            </div>
+    <!-- SECCIÓN DE PROYECTOS -->
+    <main class="projects-section">
+        <h2 class="section-title">Archivos de Proyecto</h2>
 
-            <!-- Proyecto 2 -->
-            <div class="tarjeta-proyecto">
-                <span class="etiqueta">Web Development</span>
-                <h3>Sitio Web Personal</h3>
-                <p>Implementación de un portafolio web alojado en GitHub Pages. Estructurado con HTML y CSS puro, enfocado en rendimiento, diseño responsivo y modo oscuro.</p>
-                <a href="https://adgb-dev.github.io/">Ver proyecto →</a>
+        <!-- Proyecto 1: RDR2 -->
+        <article class="project-card">
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1596541604313-05b63ceccb68?q=80&w=1000&auto=format&fit=crop');"></div>
+            <div class="project-info">
+                <h3>RDR2: Modificación de Entorno</h3>
+                <p>Ajuste profundo de parámetros internos. Modificación de las densidades poblacionales de la fauna salvaje y optimización técnica de la calidad de objetos del escenario para lograr un mayor fotorrealismo.</p>
+                <a href="#" class="btn-view">Ver Detalles</a>
             </div>
+        </article>
 
-            <!-- Proyecto 3 -->
-            <div class="tarjeta-proyecto">
-                <span class="etiqueta">Siguiente Proyecto</span>
-                <h3>[Título de tu próximo trabajo]</h3>
-                <p>Aquí puedes agregar la descripción de alguna otra herramienta, script, diseño o modificación en la que hayas estado trabajando recientemente.</p>
+        <!-- Proyecto 2: El Sitio Web -->
+        <article class="project-card">
+            <!-- Intercambiamos el orden visual para dar dinamismo -->
+            <div class="project-info">
+                <h3>Plataforma Personal</h3>
+                <p>Desarrollo de este sitio web desde cero utilizando arquitectura nativa en GitHub Pages. Diseño inspirado en interfaces AAA con alto contraste y rendimiento optimizado.</p>
+                <a href="https://adgb-dev.github.io/" class="btn-view">Ver Proyecto</a>
             </div>
+            <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop');"></div>
+        </article>
 
-        </div>
-    </div>
+    </main>
 
     <footer>
-        <p>Contáctame a través de mi perfil de <a href="https://github.com/adgb-dev" target="_blank">GitHub</a>.</p>
-        <p>&copy; 2026 adgb-dev. Todos los derechos reservados.</p>
+        <p>Visita mi repositorio en GitHub | &copy; 2026 ADGB-DEV</p>
     </footer>
 
 </body>
