@@ -156,4 +156,161 @@
         }
 
         .card-tag {
-            display: inline
+            display: inline-block;
+            background-color: rgba(255, 46, 46, 0.08);
+            color: var(--accent-red);
+            padding: 6px 14px;
+            border-radius: 30px; /* Redondeado tipo píldora */
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 46, 46, 0.15);
+        }
+
+        .mod-card h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+
+        .mod-card p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Listas internas */
+        .features-list {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .features-list li {
+            font-size: 0.95rem;
+            color: #d1d5db;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: var(--accent-red);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        /* Botones Profesionales Redondeados */
+        .btn-action {
+            display: inline-block;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-red), #b30000);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: var(--border-rounded-md); /* Botón con esquinas curvas elegantes */
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 15px rgba(255, 46, 46, 0.15);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-action:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        /* Pie de página */
+        footer {
+            max-width: 1200px;
+            margin: 90px auto 20px auto;
+            padding: 0 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+        }
+
+        footer p {
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        footer a:hover {
+            color: var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ADGB DEV</div>
+        <div class="status-badge">● Portafolio Activo</div>
+    </header>
+
+    <section class="hero-section">
+        <h1>RDR2 Modding Platform</h1>
+        <p>Espacio dedicado al desarrollo, optimización técnica y distribución de configuraciones avanzadas para Red Dead Redemption 2.</p>
+    </section>
+
+    <main class="sections-container">
+
+        <article class="mod-card">
+            <div>
+                <div class="card-header">
+                    <span class="card-tag">Librería Core</span>
+                    <h2>ScriptHook Rdr2 2.5</h2>
+                </div>
+                <p>La biblioteca fundamental para la inyección de scripts personalizados dentro del juego. Permite ejecutar archivos y plugins nativos de extensión (.asi) de manera fluida y con compatibilidad completa para la versión 2.5.</p>
+                <ul class="features-list">
+                    <li>Soporte completo para la ejecución de funciones nativas del motor ejecutor.</li>
+                    <li>Carga automatizada de plugins ASI externos sin alterar binarios base.</li>
+                    <li>Estructurado para prevenir conflictos de asignación de memoria (CTD).</li>
+                    <li>Ideal para soportar entornos de pruebas personalizados en tiempo real.</li>
+                </ul>
+            </div>
+            <a href="#" class="btn-action">Ver Documentación</a>
+        </article>
+
+        <article class="mod-card">
+            <div>
+                <div class="card-header">
+                    <span class="card-tag">Gestor de Recursos</span>
+                    <h2>Lennys Mod Loader</h2>
+                </div>
+                <p>La herramienta avanzada definitiva (LML) que permite reemplazar recursos internos del juego sin necesidad de editar directamente los archivos contenedores (.rpf). Esencial para modificar de forma limpia texturas, modelos y densidades de fauna.</p>
+                <ul class="features-list">
+                    <li>Reemplazo dinámico e inteligente de datos en tiempo de carga.</li>
+                    <li>Carga simplificada y jerárquica mediante carpetas organizadas.</li>
+                    <li>Soporte completo para modificaciones de densidad de entorno y calidad de objetos.</li>
+                    <li>Totalmente compatible con gestores de modificaciones de comunidad.</li>
+                </ul>
+            </div>
+            <a href="#" class="btn-action">Configurar LML</a>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ADGB-DEV. Creado con enfoque en optimización y diseño técnico. <a href="https://github.com/adgb-dev" target="_blank">Perfil de GitHub</a></p>
+    </footer>
+
+</body>
+</html>
