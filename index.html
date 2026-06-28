@@ -4,24 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADGB DEV | RDR2 Modding Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* Variables de diseño profesional */
         :root {
-            --bg-main: #0b0b0d;
-            --bg-card: #141417;
-            --bg-card-hover: #1c1c21;
-            --accent-red: #ff2e2e;
-            --accent-glow: rgba(255, 46, 46, 0.4);
-            --text-primary: #ffffff;
-            --text-secondary: #9ca3af;
-            
-            /* Bordes súper redondeados solicitados */
-            --border-rounded-lg: 24px;
-            --border-rounded-md: 14px;
-            --border-rounded-sm: 8px;
-            
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --accent-red: #e62020;
+            --card-bg: rgba(20, 20, 23, 0.85);
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
         }
 
         * {
@@ -32,229 +21,184 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-bottom: 60px;
+            color: var(--text-main);
+            /* Fondo mejorado: Imagen con filtro oscuro para que no sea solo negro puro */
+            background: linear-gradient(rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0.95)), 
+                        url('https://images.unsplash.com/photo-1542451313056-b7c8e626645f?q=80&w=2000&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Encabezado */
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         header {
-            max-width: 1200px;
-            margin: 40px auto 20px auto;
-            padding: 0 20px;
+            padding: 30px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
             font-family: 'Oswald', sans-serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #ffffff, var(--accent-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(230, 32, 32, 0.5);
         }
 
-        .status-badge {
-            background-color: rgba(0, 255, 136, 0.1);
+        .status {
+            background: rgba(0, 255, 136, 0.15);
             color: #00ff88;
-            padding: 6px 16px;
-            border-radius: 30px; /* Completamente redondeado */
+            padding: 8px 18px;
+            border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            border: 1px solid rgba(0, 255, 136, 0.3);
         }
 
-        /* Sección Hero (Título Principal) */
-        .hero-section {
-            max-width: 1200px;
-            margin: 0 auto 50px auto;
-            padding: 40px 20px;
+        .hero {
             text-align: center;
+            padding: 60px 20px 40px;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .hero-section h1 {
+        .hero h1 {
             font-family: 'Oswald', sans-serif;
-            font-size: 3.8rem;
+            font-size: 4rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
             margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        .hero-section p {
-            color: var(--text-secondary);
+        .hero p {
+            color: var(--text-muted);
             font-size: 1.2rem;
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
-            font-weight: 300;
         }
 
-        /* Contenedor de Apartados (Grid) */
-        .sections-container {
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 30px;
+            padding: 20px 5%;
+            flex: 1;
         }
 
-        @media (max-width: 768px) {
-            .sections-container {
-                grid-template-columns: 1fr;
-            }
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* Tarjetas con Diseño Profesional Redondeado */
-        .mod-card {
-            background-color: var(--bg-card);
-            border-radius: var(--border-rounded-lg); /* Esquinas muy redondeadas y suaves */
-            padding: 45px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
+        /* Tarjetas súper redondeadas */
+        .card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        /* Efecto de iluminación sutil al pasar el mouse */
-        .mod-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(255, 46, 46, 0.07), transparent 60%);
-            opacity: 0;
-            transition: var(--transition-smooth);
+        /* Retraso en la segunda tarjeta para efecto visual */
+        .card:nth-child(2) {
+            animation-delay: 0.2s;
         }
 
-        .mod-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 46, 46, 0.25);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 46, 46, 0.03);
-            background-color: var(--bg-card-hover);
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-red);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(230, 32, 32, 0.1);
         }
 
-        .mod-card:hover::before {
-            opacity: 1;
-        }
-
-        .card-header {
-            margin-bottom: 25px;
-        }
-
-        .card-tag {
+        .tag {
             display: inline-block;
-            background-color: rgba(255, 46, 46, 0.08);
+            background: rgba(230, 32, 32, 0.15);
             color: var(--accent-red);
-            padding: 6px 14px;
-            border-radius: 30px; /* Redondeado tipo píldora */
+            padding: 6px 16px;
+            border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 46, 46, 0.15);
+            margin-bottom: 20px;
+            border: 1px solid rgba(230, 32, 32, 0.3);
         }
 
-        .mod-card h2 {
+        .card h2 {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.4rem;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-primary);
         }
 
-        .mod-card p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 30px;
-            font-weight: 300;
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 25px;
         }
 
-        /* Listas internas */
-        .features-list {
+        ul {
             list-style: none;
             margin-bottom: 35px;
         }
 
-        .features-list li {
-            font-size: 0.95rem;
+        ul li {
             color: #d1d5db;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        .features-list li::before {
-            content: "•";
+        ul li::before {
+            content: "➔";
             color: var(--accent-red);
-            font-weight: bold;
-            display: inline-block;
-            width: 1.5rem;
-            font-size: 1.4rem;
-        }
-
-        /* Botones Profesionales Redondeados */
-        .btn-action {
-            display: inline-block;
-            text-align: center;
-            background: linear-gradient(135deg, var(--accent-red), #b30000);
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: var(--border-rounded-md); /* Botón con esquinas curvas elegantes */
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 15px rgba(255, 46, 46, 0.15);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-action:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px var(--accent-glow);
-            filter: brightness(1.1);
-        }
-
-        /* Pie de página */
-        footer {
-            max-width: 1200px;
-            margin: 90px auto 20px auto;
-            padding: 0 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 30px;
-        }
-
-        footer p {
-            color: #4b5563;
+            margin-right: 12px;
             font-size: 0.9rem;
+            margin-top: 3px;
         }
 
-        footer a {
-            color: var(--text-secondary);
+        /* Botón redondeado */
+        .btn {
+            display: block;
+            text-align: center;
+            background: var(--accent-red);
+            color: #fff;
+            padding: 16px 20px;
+            border-radius: 16px;
             text-decoration: none;
-            transition: var(--transition-smooth);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
         }
 
-        footer a:hover {
-            color: var(--accent-red);
+        .btn:hover {
+            background: #ff3333;
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(230, 32, 32, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
@@ -262,54 +206,48 @@
 
     <header>
         <div class="logo">ADGB DEV</div>
-        <div class="status-badge">● Portafolio Activo</div>
+        <div class="status">Sistema En Línea</div>
     </header>
 
-    <section class="hero-section">
-        <h1>RDR2 Modding Platform</h1>
-        <p>Espacio dedicado al desarrollo, optimización técnica y distribución de configuraciones avanzadas para Red Dead Redemption 2.</p>
+    <section class="hero">
+        <h1>RDR2 Modding Hub</h1>
+        <p>Herramientas y librerías avanzadas para la modificación de Red Dead Redemption 2.</p>
     </section>
 
-    <main class="sections-container">
-
-        <article class="mod-card">
+    <main class="grid-container">
+        
+        <article class="card">
             <div>
-                <div class="card-header">
-                    <span class="card-tag">Librería Core</span>
-                    <h2>ScriptHook Rdr2 2.5</h2>
-                </div>
-                <p>La biblioteca fundamental para la inyección de scripts personalizados dentro del juego. Permite ejecutar archivos y plugins nativos de extensión (.asi) de manera fluida y con compatibilidad completa para la versión 2.5.</p>
-                <ul class="features-list">
-                    <li>Soporte completo para la ejecución de funciones nativas del motor ejecutor.</li>
-                    <li>Carga automatizada de plugins ASI externos sin alterar binarios base.</li>
-                    <li>Estructurado para prevenir conflictos de asignación de memoria (CTD).</li>
-                    <li>Ideal para soportar entornos de pruebas personalizados en tiempo real.</li>
+                <span class="tag">Librería Core</span>
+                <h2>ScriptHook Rdr2 2.5</h2>
+                <p>El núcleo esencial que permite ejecutar plugins nativos en formato .asi. Versión optimizada para garantizar la máxima estabilidad al inyectar scripts personalizados en el motor del juego.</p>
+                <ul>
+                    <li>Inyección segura sin alterar los ejecutables originales.</li>
+                    <li>Compatibilidad total con las últimas actualizaciones del título.</li>
+                    <li>Soporte para menús de desarrollo y herramientas externas.</li>
                 </ul>
             </div>
-            <a href="#" class="btn-action">Ver Documentación</a>
+            <a href="#" class="btn">Descargar ScriptHook</a>
         </article>
 
-        <article class="mod-card">
+        <article class="card">
             <div>
-                <div class="card-header">
-                    <span class="card-tag">Gestor de Recursos</span>
-                    <h2>Lennys Mod Loader</h2>
-                </div>
-                <p>La herramienta avanzada definitiva (LML) que permite reemplazar recursos internos del juego sin necesidad de editar directamente los archivos contenedores (.rpf). Esencial para modificar de forma limpia texturas, modelos y densidades de fauna.</p>
-                <ul class="features-list">
-                    <li>Reemplazo dinámico e inteligente de datos en tiempo de carga.</li>
-                    <li>Carga simplificada y jerárquica mediante carpetas organizadas.</li>
-                    <li>Soporte completo para modificaciones de densidad de entorno y calidad de objetos.</li>
-                    <li>Totalmente compatible con gestores de modificaciones de comunidad.</li>
+                <span class="tag">Gestor de Mods</span>
+                <h2>Lennys Mod Loader</h2>
+                <p>La utilidad LML te permite organizar, instalar y gestionar modificaciones de texturas, modelos y archivos meta de forma jerárquica y limpia sin tocar los archivos .rpf.</p>
+                <ul>
+                    <li>Carga inteligente de archivos fuera del directorio raíz.</li>
+                    <li>Interfaz amigable para habilitar o deshabilitar modificaciones.</li>
+                    <li>Gestión de orden de carga para evitar conflictos de datos.</li>
                 </ul>
             </div>
-            <a href="#" class="btn-action">Configurar LML</a>
+            <a href="#" class="btn">Obtener LML</a>
         </article>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 ADGB-DEV. Creado con enfoque en optimización y diseño técnico. <a href="https://github.com/adgb-dev" target="_blank">Perfil de GitHub</a></p>
+        &copy; 2026 ADGB-DEV - Plataforma de Desarrollo y Modding
     </footer>
 
 </body>
